@@ -9,7 +9,7 @@ import sys
 import math
 
 error_messages = {
-    'big_file': "File is to large to copy using this tool ( > 1GB)",
+    'big_file': "File is too large to copy using this tool ( > 3GB)",
     'size not equals': "target and source aren't the same size",
     'cannot overwrite': "Target directory already exists, cannot overwrite",
     'sys error': "System Error, failed to copy file",
@@ -146,7 +146,7 @@ if __name__ == '__main__':
     reports_lst = []
 
     # max directory file to copy 1GB
-    max_dir_size = 1073741824
+    max_dir_size = 3221225471
 
     # counts number of projects copied
     success_counter = 0

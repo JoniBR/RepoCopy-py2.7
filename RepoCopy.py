@@ -86,8 +86,10 @@ def parser(file, paths_queue):
         lines = csv.DictReader(csv_file)
         for line in lines:
             if line:
-                src = line['source']
-                dest = line['target']
+                src = line['source'][:-1] if line['source'][-1] == "\\" or line['source'][-1] == "/" else line[
+                    'source']
+                dest = line['target'][:-1] if line['target'][-1] == "\\" or line['target'][-1] == "/" else line[
+                    'target']
                 paths_queue.put([src, dest])
 
 
@@ -194,7 +196,6 @@ if __name__ == '__main__':
     # wait for workers to finish
     for worker in workers:
         worker.join()
-
 
     # create report file
     with open('report ' + str(time.time()) + '.csv', 'w') as csvfile:
